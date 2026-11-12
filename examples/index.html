@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>anymap-ts TypeScript Examples</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      min-height: 100vh;
+      color: #fff;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #00d9ff, #00ff88);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .subtitle {
+      text-align: center;
+      color: #888;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+    }
+    .categories {
+      display: grid;
+      gap: 30px;
+    }
+    .category {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .category h2 {
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      color: #00d9ff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .category h2::before {
+      content: '';
+      width: 4px;
+      height: 20px;
+      background: linear-gradient(180deg, #00d9ff, #00ff88);
+      border-radius: 2px;
+    }
+    .examples {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .example-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+      display: block;
+    }
+    .example-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(0, 217, 255, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 217, 255, 0.15);
+    }
+    .example-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .example-card p {
+      font-size: 0.9rem;
+      color: #888;
+      line-height: 1.5;
+    }
+    .example-card .tag {
+      display: inline-block;
+      background: rgba(0, 217, 255, 0.15);
+      color: #00d9ff;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      margin-top: 12px;
+    }
+    .example-card .tag.sub {
+      background: rgba(0, 255, 136, 0.15);
+      color: #00ff88;
+      margin-left: 4px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      color: #555;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #00d9ff;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>anymap-ts</h1>
+    <p class="subtitle">Interactive TypeScript Examples for Web Mapping</p>
+
+    <div class="categories">
+      <div class="category">
+        <h2>MapLibre GL JS</h2>
+        <div class="examples">
+          <a href="./maplibre/" class="example-card">
+            <h3>Basic Example</h3>
+            <p>Vector maps with draw controls, markers, GeoJSON layers, and layer control.</p>
+            <span class="tag">Default Renderer</span>
+          </a>
+          <a href="./maplibre/control_grid.html" class="example-card">
+            <h3>Control Grid</h3>
+            <p>All-in-one control panel with COG, Zarr, PMTiles, and data layer support.</p>
+            <span class="tag">All Controls</span><span class="tag sub">Panel</span>
+          </a>
+          <a href="./maplibre/cog_layer.html" class="example-card">
+            <h3>COG Layer</h3>
+            <p>Cloud Optimized GeoTIFF visualization with NLCD 2024 Land Cover dataset.</p>
+            <span class="tag">Raster</span><span class="tag sub">30m</span>
+          </a>
+          <a href="./maplibre/arc_layer.html" class="example-card">
+            <h3>Arc Layer</h3>
+            <p>Great-circle arcs connecting city pairs with deck.gl ArcLayer.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">3D</span>
+          </a>
+          <a href="./maplibre/pointcloud_layer.html" class="example-card">
+            <h3>Point Cloud Layer</h3>
+            <p>3D point cloud visualization using deck.gl PointCloudLayer.</p>
+            <span class="tag">Point Cloud</span><span class="tag sub">Deck.gl</span>
+          </a>
+          <a href="./maplibre/lidar_layer.html" class="example-card">
+            <h3>LiDAR Layer</h3>
+            <p>LiDAR point cloud visualization with LAS/LAZ/COPC support and classification filtering.</p>
+            <span class="tag">LiDAR</span><span class="tag sub">COPC</span>
+          </a>
+          <a href="./maplibre/trips_layer.html" class="example-card">
+            <h3>Trips Layer</h3>
+            <p>Animated trip trails using deck.gl TripsLayer with waypoint timestamps.</p>
+            <span class="tag">Animation</span><span class="tag sub">Deck.gl</span>
+          </a>
+          <a href="./maplibre/zarr_layer.html" class="example-card">
+            <h3>Zarr Layer</h3>
+            <p>Multi-dimensional Zarr datasets with climate, ocean, and burn probability data.</p>
+            <span class="tag">Scientific</span><span class="tag sub">4D</span>
+          </a>
+          <a href="./maplibre/scatterplot_layer.html" class="example-card">
+            <h3>Scatterplot Layer</h3>
+            <p>GPU-accelerated point visualization with deck.gl ScatterplotLayer.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">Points</span>
+          </a>
+          <a href="./maplibre/hexagon_layer.html" class="example-card">
+            <h3>Hexagon Layer</h3>
+            <p>3D hexagonal binning aggregation for point density visualization.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">Aggregation</span>
+          </a>
+          <a href="./maplibre/heatmap_layer.html" class="example-card">
+            <h3>Heatmap Layer</h3>
+            <p>Density visualization with deck.gl HeatmapLayer for point data.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">Density</span>
+          </a>
+          <a href="./maplibre/path_layer.html" class="example-card">
+            <h3>Path Layer</h3>
+            <p>Multi-vertex path visualization with deck.gl PathLayer for routes.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">Routes</span>
+          </a>
+          <a href="./maplibre/bitmap_layer.html" class="example-card">
+            <h3>Bitmap Layer</h3>
+            <p>Display raster images as map overlays using deck.gl BitmapLayer.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">Raster</span>
+          </a>
+          <a href="./maplibre/column_layer.html" class="example-card">
+            <h3>Column Layer</h3>
+            <p>3D column/bar visualization with extruded cylinders at data points.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">3D</span>
+          </a>
+          <a href="./maplibre/terrain_layer.html" class="example-card">
+            <h3>Terrain Layer</h3>
+            <p>3D terrain visualization using elevation tiles with satellite texture.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">Terrain</span>
+          </a>
+          <a href="./maplibre/greatcircle_layer.html" class="example-card">
+            <h3>Great Circle Layer</h3>
+            <p>Geodesic arcs showing shortest paths between world locations.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">Geodesic</span>
+          </a>
+          <a href="./maplibre/h3hexagon_layer.html" class="example-card">
+            <h3>H3 Hexagon Layer</h3>
+            <p>Uber H3 spatial index visualization with extruded hexagonal cells.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">H3</span>
+          </a>
+          <a href="./maplibre/tile_layer.html" class="example-card">
+            <h3>Tile Layer</h3>
+            <p>Generic tile layer for custom raster tile sources.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">Tiles</span>
+          </a>
+          <a href="./maplibre/mvt_layer.html" class="example-card">
+            <h3>MVT Layer</h3>
+            <p>Mapbox Vector Tiles rendering with deck.gl MVTLayer.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">Vector</span>
+          </a>
+          <a href="./maplibre/tile3d_layer.html" class="example-card">
+            <h3>3D Tiles Layer</h3>
+            <p>OGC 3D Tiles support for buildings and massive point clouds.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">3D Tiles</span>
+          </a>
+          <a href="./maplibre/gridcell_layer.html" class="example-card">
+            <h3>Grid Cell Layer</h3>
+            <p>Regular grid cell rendering with 3D extrusion support.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">Grid</span>
+          </a>
+          <a href="./maplibre/solidpolygon_layer.html" class="example-card">
+            <h3>Solid Polygon Layer</h3>
+            <p>Filled polygon rendering with 3D extrusion for building footprints.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">Polygon</span>
+          </a>
+          <a href="./maplibre/s2_layer.html" class="example-card">
+            <h3>S2 Layer</h3>
+            <p>Google S2 geometry cells for spatial indexing visualization.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">S2</span>
+          </a>
+          <a href="./maplibre/quadkey_layer.html" class="example-card">
+            <h3>Quadkey Layer</h3>
+            <p>Bing Maps quadkey tile indexing visualization.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">Quadkey</span>
+          </a>
+          <a href="./maplibre/geohash_layer.html" class="example-card">
+            <h3>Geohash Layer</h3>
+            <p>Geohash spatial indexing cells with 3D extrusion.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">Geohash</span>
+          </a>
+          <a href="./maplibre/h3cluster_layer.html" class="example-card">
+            <h3>H3 Cluster Layer</h3>
+            <p>H3 hexagon clustering for grouped spatial data.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">Cluster</span>
+          </a>
+          <a href="./maplibre/wms_layer.html" class="example-card">
+            <h3>WMS Layer</h3>
+            <p>Web Map Service integration for standard OGC services.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">WMS</span>
+          </a>
+          <a href="./maplibre/simplemesh_layer.html" class="example-card">
+            <h3>Simple Mesh Layer</h3>
+            <p>3D mesh geometry rendering at geographic locations.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">Mesh</span>
+          </a>
+          <a href="./maplibre/scenegraph_layer.html" class="example-card">
+            <h3>Scenegraph Layer</h3>
+            <p>glTF 3D models placed on the map with animations.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">glTF</span>
+          </a>
+          <a href="./maplibre/geojson_layer.html" class="example-card">
+            <h3>GeoJSON Layer</h3>
+            <p>Render GeoJSON features with points, lines, and polygons using deck.gl.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">Vector</span>
+          </a>
+          <a href="./maplibre/icon_layer.html" class="example-card">
+            <h3>Icon Layer</h3>
+            <p>Custom marker icons with sprite atlas and dynamic styling.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">Markers</span>
+          </a>
+          <a href="./maplibre/polygon_layer.html" class="example-card">
+            <h3>Polygon Layer</h3>
+            <p>Filled and stroked polygon visualization with 3D extrusion support.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">3D</span>
+          </a>
+          <a href="./maplibre/text_layer.html" class="example-card">
+            <h3>Text Layer</h3>
+            <p>Dynamic text labels with custom fonts, sizes, and rotation.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">Labels</span>
+          </a>
+          <a href="./maplibre/contour_layer.html" class="example-card">
+            <h3>Contour Layer</h3>
+            <p>Density isolines with customizable thresholds and colors.</p>
+            <span class="tag">Deck.gl</span><span class="tag sub">Aggregation</span>
+          </a>
+          <a href="./maplibre/pmtiles_layer.html" class="example-card">
+            <h3>PMTiles Layer</h3>
+            <p>Agricultural field boundaries from Fields of the World, color-coded by feature ID.</p>
+            <span class="tag">PMTiles</span><span class="tag sub">Vector</span>
+          </a>
+          <a href="./maplibre/geophoto_layer.html" class="example-card">
+            <h3>GeoPhoto Control</h3>
+            <p>Street-level imagery viewer with camera trajectories and photo navigation.</p>
+            <span class="tag">Control</span><span class="tag sub">Photos</span>
+          </a>
+          <a href="./maplibre/geoagent_control.html" class="example-card">
+            <h3>GeoAgent Control</h3>
+            <p>Browser AI assistant control for inspecting and operating on a live MapLibre map.</p>
+            <span class="tag">Control</span><span class="tag sub">AI</span>
+          </a>
+          <a href="./maplibre/geoagent_gee.html" class="example-card">
+            <h3>GeoAgent GEE</h3>
+            <p>GeoAgent control configured with Google Earth Engine catalog and layer tools.</p>
+            <span class="tag">Control</span><span class="tag sub">GEE</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="category">
+        <h2>Other Map Libraries</h2>
+        <div class="examples">
+          <a href="./leaflet/" class="example-card">
+            <h3>Leaflet</h3>
+            <p>Lightweight, mobile-friendly maps with markers, popups, and GeoJSON support.</p>
+            <span class="tag">Lightweight</span>
+          </a>
+          <a href="./mapbox/" class="example-card">
+            <h3>Mapbox GL JS</h3>
+            <p>Commercial vector maps with 3D terrain and building support.</p>
+            <span class="tag">Requires Token</span>
+          </a>
+          <a href="./openlayers/" class="example-card">
+            <h3>OpenLayers</h3>
+            <p>High-performance mapping with WMS/WMTS and projection support.</p>
+            <span class="tag">Enterprise</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="category">
+        <h2>3D Visualization</h2>
+        <div class="examples">
+          <a href="./cesium/" class="example-card">
+            <h3>Cesium</h3>
+            <p>3D globe with terrain, camera control, GeoJSON, and 3D Tiles support.</p>
+            <span class="tag">3D Globe</span>
+          </a>
+          <a href="./potree/" class="example-card">
+            <h3>Potree</h3>
+            <p>WebGL-based point cloud viewer for large LiDAR datasets.</p>
+            <span class="tag">Point Cloud</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="category">
+        <h2>GPU-Accelerated Layers</h2>
+        <div class="examples">
+          <a href="./deckgl/" class="example-card">
+            <h3>DeckGL</h3>
+            <p>GPU-accelerated layers: ScatterplotLayer, HexagonLayer, HeatmapLayer, ArcLayer.</p>
+            <span class="tag">GPU</span>
+          </a>
+          <a href="./keplergl/" class="example-card">
+            <h3>KeplerGL</h3>
+            <p>Interactive data exploration tool with filters, layers, and styling controls.</p>
+            <span class="tag">Data Viz</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        <a href="https://github.com/opengeos/anymap-ts" target="_blank">GitHub</a> ·
+        <a href="https://ts.anymap.dev" target="_blank">Documentation</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
